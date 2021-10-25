@@ -39,6 +39,9 @@ class DataSpider(scrapy.Spider):
 #        yield scrapy.Request(url=new_url,callback=self.parse)
 
     def parse_model(self,response):
+
+        #这边是基于终端指令的存储
+            #指令： scrapy crawl filename -o '文件保存的路径及格式'（'./data.csv'）
         dics=[]
         div_list = response.xpath('/html/body/div/div/div')
         check = div_list[1].xpath('./table//tr[3]/td[2]/text()').extract_first()
