@@ -17,7 +17,7 @@ class DataSpider(scrapy.Spider):
 
     #在这个里面并不好用，一般来说都是靠递归来实现循环
     model_url = []
-    types = ['GPS','GLO','GAL']
+    types = ['GPS20度','GLO20度','GAL20度']
     for number in [25,26,27,28,29,30,31]:
         for i in types:
             url = f'file:///H:/GNSS数据处理/刘正/北斗星通/第一批/2{number}/华测自动化检测报告-{i}.html'
@@ -76,6 +76,9 @@ class DataSpider(scrapy.Spider):
             e5=0
         if(e6 == "-"):
             e6=0
+        
+        if(weekJumpRatio == '99999999'):
+            weekJumpRatio=999999
 
         dic={
             "角度":angle,
